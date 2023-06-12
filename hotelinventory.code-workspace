@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../hotelinventory"
+		},
+		{
+			"name": "angularBasics",
+			"path": "../hotelinventory/angularBasics"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

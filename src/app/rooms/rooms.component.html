@@ -1,0 +1,45 @@
+<p>rooms works!</p>
+<h1>Welcome to {{hotelname}}</h1>
+
+<!-- ngstyle -->
+<div [hidden]="hideRooms">
+    Number of Rooms : 
+    <div [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
+        [innerText]="numberOfRooms"></div>
+
+</div>
+
+{{rooms?.availableRooms ?? 'No rooms'}}
+
+<!-- {{roomList | json}} -->
+
+<div *ngIf="rooms.availableRooms > 0">
+    Rooms list
+    <!-- {{roomList}} -->
+    <table>
+        <tr>
+            <th>Index</th>
+            <th>Even / odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Room Amenities</th>
+            <th>CheckIn Time</th>
+            <th>CheckOut Time</th>
+        </tr>
+        <!-- ngfor -->
+        <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList | slice : 0:3; let e = even; let o = odd; let i = index">
+            <td>{{i | percent}}</td>
+            <td>{{ e ? "Even" : "Odd"}}</td>
+            <td>{{room.roomNumber}}</td>
+            <td>{{room.rommType}}</td>
+            <td>{{room.price | currency: 'INR'}}</td>
+            <td>{{room.amenities | titlecase}}</td>
+            <td>{{room.checkInTime | date : 'dd/MM/yyy'}}</td>
+            <td>{{room.checkOutTime | date : 'dd/MM/yyy'}}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- eventbinding -->
+<button class="btn btn-primary" (click)="toggle()">Toggle</button>
