@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit{
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked{
 
   //interpolation
   hotelname:string="Season 4";
@@ -18,6 +19,8 @@ export class RoomsComponent implements OnInit{
   hideRooms = false;
 
   title = 'room list';
+
+  @ViewChild(HeaderComponent,{static:true}) headerComponent!:HeaderComponent;
 
   //child to parent
   selectedRoom!: RoomList;
@@ -31,8 +34,21 @@ export class RoomsComponent implements OnInit{
   roomList : RoomList[] = [];
 
   constructor(){}
+  ngAfterViewChecked(): void {
+
+  }
+  ngAfterViewInit(): void {
+    console.log(this.headerComponent);
+  }
+  ngDoCheck(): void {
+    console.log();
+  }
+
+ // dont use docheck and onChanges together
 
   ngOnInit(): void {
+    console.log(this.headerComponent);
+
     this.roomList = [
       {
         roomNumber: 1,
