@@ -1,0 +1,27 @@
+<table class="table">
+    <tr>
+        <th>Index</th>
+        <th>Even / odd</th>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Room Price</th>
+        <th>Room Amenities</th>
+        <th>CheckIn Time</th>
+        <th>CheckOut Time</th>
+    </tr>
+    <!-- ngfor -->
+    <!-- data coming from parent in for loop -->
+    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms | slice : 0:3; let e = even; let o = odd; let i = index">
+        <td>{{i | percent}}</td>
+        <td>{{ e ? "Even" : "Odd"}}</td>
+        <td>{{room.roomNumber}}</td>
+        <td>{{room.rommType}}</td>
+        <td>{{room.price | currency: 'INR'}}</td>
+        <td>{{room.amenities | titlecase}}</td>
+        <td>{{room.checkInTime | date : 'dd/MM/yyy'}}</td>
+        <td>{{room.checkOutTime | date : 'dd/MM/yyy'}}</td>
+        <td>
+            <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+        </td>
+    </tr>
+</table>
