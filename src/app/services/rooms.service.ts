@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { RoomList } from '../rooms/rooms';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { shareReplay } from 'rxjs';
 
 
@@ -9,7 +9,14 @@ import { shareReplay } from 'rxjs';
 })
 export class RoomsService {
 
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(
+  // headers = new HttpHeaders({'token':'12345564554asdgfg'}).append();
+
+
+  headers = new HttpHeaders({'token':'12345564554asdgfg'});
+
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms',{
+    headers : this.headers,
+  }).pipe(
     shareReplay(1)
   );
 
@@ -48,6 +55,7 @@ export class RoomsService {
   getRooms(){
     //return this.roomList;
     
+  
     //because of proxy config we dont have to give full api path here
     return this.http.get<RoomList[]>('/api/rooms');
     
