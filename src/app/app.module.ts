@@ -10,6 +10,15 @@ import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { RoomBookingComponent } from './rooms/room-booking/room-booking.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +27,22 @@ import { HttpClientModule } from '@angular/common/http';
     RoomsListComponent,
     HeaderComponent,
     ContainerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AppNavComponent,
+    NotfoundComponent,
+    RoomBookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
