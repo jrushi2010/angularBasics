@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RoomBookingComponent } from './rooms/room-booking/room-booking.component';
+import { RoomAddComponent } from './rooms/room-add/room-add.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { RoomBookingComponent } from './rooms/room-booking/room-booking.componen
     EmployeeComponent,
     AppNavComponent,
     NotfoundComponent,
-    RoomBookingComponent
+    RoomBookingComponent,
+    RoomAddComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { RoomBookingComponent } from './rooms/room-booking/room-booking.componen
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
