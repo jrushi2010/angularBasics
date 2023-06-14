@@ -3,6 +3,7 @@ import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from '../services/rooms.service';
 import { HttpEventType } from '@angular/common/http';
+import { Subject, Subscription, catchError, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -23,6 +24,24 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   title = 'room list';
 
   totalBytes = 0;
+
+  subscription! : Subscription;
+
+  error$ = new Subject<string>();
+
+  getError$ = this.error$.asObservable();
+
+  rooms$ = this.roomservice.getRooms$.pipe(
+    catchError((error)=>{
+      //console.log(error);
+      this.error$.next(error.message);
+      return of([]);
+    })
+  );
+
+  roomsCount$ = this.roomservice.getRooms$.pipe(
+    map((rooms)=>rooms.length)
+  )
 
   @ViewChild(HeaderComponent,{static:true}) headerComponent!:HeaderComponent;
 
@@ -77,7 +96,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
    //this.roomList = this.roomservice.getRooms();
 
-    this.roomservice.getRooms().subscribe(rooms => {
+    this.subscription=  this.roomservice.getRooms().subscribe(rooms => {
       this.roomList = rooms;
     })
     
@@ -148,6 +167,12 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   toggle(){
     this.hideRooms = !this.hideRooms;
     this.title = 'Rooms List'
+  }
+
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 
 }

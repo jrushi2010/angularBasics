@@ -18,7 +18,12 @@
 
 <!-- {{roomList | json}} -->
 
+<h1>
+    
+    <!-- {{getError$ | async}} -->
+    Number of Rooms: {{roomsCount$ | async}}
 
+</h1>
 
 <div *ngIf="rooms.availableRooms > 0">
     Rooms list
