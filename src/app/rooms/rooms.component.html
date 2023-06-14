@@ -11,6 +11,7 @@
 
 </div>
 
+
 {{rooms?.availableRooms ?? 'No rooms'}}
 
 
@@ -35,6 +36,14 @@
     {{selectedRoom | json}}
 </div>
 
+<button class="btn btn-primary" (click)="addRoom()">Add Room</button>
+
+<button class="btn btn-primary" (click)="editRoom()">Edit Room</button>
+
+<button class="btn btn-primary" (click)="deleteRoom()">Delete Room</button>
+
 
 <!-- eventbinding -->
 <button class="btn btn-primary" (click)="toggle()">Toggle</button>
+
+{{totalBytes}}

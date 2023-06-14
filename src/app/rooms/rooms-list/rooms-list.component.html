@@ -11,15 +11,16 @@
     </tr>
     <!-- ngfor -->
     <!-- data coming from parent in for loop -->
-    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms | slice : 0:3; let e = even; let o = odd; let i = index">
+    <!-- <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms | slice : 0:3; let e = even; let o = odd; let i = index"> -->
+    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms; let e = even; let o = odd; let i = index">
         <td>{{i | percent}}</td>
         <td>{{ e ? "Even" : "Odd"}}</td>
         <td>{{room.roomNumber}}</td>
-        <td>{{room.rommType}}</td>
+        <td>{{room.roomType}}</td>
         <td>{{room.price | currency: 'INR'}}</td>
         <td>{{room.amenities | titlecase}}</td>
-        <td>{{room.checkInTime | date : 'dd/MM/yyy'}}</td>
-        <td>{{room.checkOutTime | date : 'dd/MM/yyy'}}</td>
+        <td>{{room.checkinTime | date : 'dd/MM/yyy'}}</td>
+        <td>{{room.checkoutTime | date : 'dd/MM/yyy'}}</td>
         <td>
             <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
         </td>
