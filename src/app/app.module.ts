@@ -20,7 +20,9 @@ import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RoomBookingComponent } from './rooms/room-booking/room-booking.component';
 import { RoomAddComponent } from './rooms/room-add/room-add.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HoverDirective } from './hover.directive'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FormsModule } from '@angular/forms'
     AppNavComponent,
     NotfoundComponent,
     RoomBookingComponent,
-    RoomAddComponent
+    RoomAddComponent,
+    LoginComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
