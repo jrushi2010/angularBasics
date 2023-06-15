@@ -3,7 +3,7 @@ import { RouteConfigToken } from './routeConfig.service';
 import { RouteConfig } from './routeConfig';
 
 @Injectable({
-  providedIn: 'any'  //get singleton instances 
+  providedIn: 'root'  //get singleton instances 
   // providedIn: 'any'  
   //it will create 1 instance for entire App and another instance for each lazy loaded module if we use this service in another modules
   //it will use for pass configuration or override any configuration inside any lazy loaded module. 
