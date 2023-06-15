@@ -21,27 +21,32 @@ export class BookingComponent {
 
   ngOnInit() {
     this.bookingForm = this.fb.group({
-      roomId: new FormControl({ value: '2', disabled: true },{validators:[Validators.required]}),
-      guestEmail: ["",[Validators.required,Validators.email]],
+      roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
+      guestEmail: ["", { updateOn: 'blur', validators: [Validators.required, Validators.email], },],
       checkindate: [""],
       checkoutdate: [""],
       bookingStatus: [""],
       bookingAmount: [""],
       bookingDate: [""],
-      mobileNumber: [""],
-      guestName: ["",[Validators.required,Validators.minLength(5)]],
+      mobileNumber: ["", { updateOn: 'blur' }], //blur is the event call if we move cursor out from the input box
+      guestName: ["", [Validators.required, Validators.minLength(5)]],
       address: this.fb.group({
-        addressLine1: ['',{validators: [Validators.required] }],
+        addressLine1: ['', { validators: [Validators.required] }],
         addressLine2: [""],
-        city: ["",{validators: [Validators.required] }],
-        state: ["",{validators: [Validators.required] }],
+        city: ["", { validators: [Validators.required] }],
+        state: ["", { validators: [Validators.required] }],
         country: [""],
         zipcode: [""],
       }),
       guests: this.fb.array([this.addGuestControl()]),
-      tnc: new FormControl(false,{validators:[Validators.requiredTrue]}),
-    });
+      tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
+    },{updateOn:'blur',});
     this.getBookingData();
+
+    //it will call for evry key press or every value change so it will give performance issue if we have large form
+    this.bookingForm.valueChanges.subscribe((data) => {
+      console.log(data);
+    })
   }
 
   addBooking() {
@@ -66,14 +71,14 @@ export class BookingComponent {
       },
       guests: [],
       tnc: false,
-    
+
     });
   }
 
   //it is used for if the value are comming from api and we want to bind it to form 
   //setValue is for - if we have to pass value for each and every control
   //patchValue is for - it allow to skip some of the controls
-  getBookingData(){
+  getBookingData() {
     // this.bookingForm.setValue({
     this.bookingForm.patchValue({
       roomId: '2',
@@ -101,47 +106,26 @@ export class BookingComponent {
 
   addGuest() {
     this.guests.push(
-     this.addGuestControl()
+      this.addGuestControl()
     );
   }
 
-  addGuestControl(){
-    return this.fb.group({ guestName: ['',{validators: [Validators.required]}], age: new FormControl(''), })
+  addGuestControl() {
+    return this.fb.group({ guestName: ['', { validators: [Validators.required] }], age: new FormControl(''), })
   }
 
-  addPassport(){
-    this.bookingForm.addControl('passport',new FormControl(''));
+  addPassport() {
+    this.bookingForm.addControl('passport', new FormControl(''));
   }
 
-  deletePassport(){
-    if(this.bookingForm.get('passport')){
+  deletePassport() {
+    if (this.bookingForm.get('passport')) {
       this.bookingForm.removeControl('passport');
     }
   }
 
-  removeGuest(i:number){
+  removeGuest(i: number) {
     this.guests.removeAt(i);
   }
 
 }
-
-
-// export class Booking {
-//   roomId:string;
-//   guestEmail: string;
-//   checkindate: Date;
-//   checkoutdate: Date;
-//   bookingStatus: string;
-//   bookingAmount: number;
-//   bookingDate: Date;
-//   mobileNumber: string;
-//   guestName: string;
-//   guestAddress: string;
-//   guestCity: string;
-//   guestState: string;
-//   guestCountry: string;
-//   guestZipCode: string;
-//   guestCount: number;
-//   huestList: Guest[];
-
-// }
