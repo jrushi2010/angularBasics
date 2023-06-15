@@ -1,33 +1,33 @@
 <div class="container">
 <!-- <h1>Welcome to {{hotelname}}</h1> -->
 
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
 <!-- ngstyle -->
-<div [hidden]="hideRooms">
+<!-- <div [hidden]="hideRooms">
     Number of Rooms : 
     <div [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red'}"
         [innerText]="numberOfRooms"></div>
 
-</div>
+</div> -->
 
 
-{{rooms?.availableRooms ?? 'No rooms'}}
+<!-- {{rooms?.availableRooms ?? 'No rooms'}} -->
 
 
 
 <!-- {{roomList | json}} -->
 
-<h1>
+<!-- <h1>
     
-    <!-- {{getError$ | async}} -->
+    {{getError$ | async}}
     Number of Rooms: {{roomsCount$ | async}}
 
-</h1>
+</h1> -->
 
 <div *ngIf="rooms.availableRooms > 0">
     Rooms list
-    {{title}}
+    <!-- {{title}} -->
     <!-- {{roomList}} -->
     <!-- //parent to child communication -->
     <!-- //child to parent communication  -->
@@ -37,21 +37,21 @@
 
 
 
-<div *ngIf="selectedRoom">
+<!-- <div *ngIf="selectedRoom">
     {{selectedRoom | json}}
-</div>
+</div> -->
 
-<button class="btn btn-primary" routerLink="add">Add Room</button>
+<button class="btn btn-success" routerLink="add">Add Room</button>
 
-<button class="btn btn-primary" (click)="editRoom()">Edit Room</button>
+<!-- <button class="btn btn-primary" (click)="editRoom()">Edit Room</button>
 
 <button class="btn btn-primary" (click)="deleteRoom()">Delete Room</button>
 
 
-<!-- eventbinding -->
-<button class="btn btn-primary" (click)="toggle()">Toggle</button>
+<-- eventbinding 
+<button class="btn btn-primary" (click)="toggle()">Toggle</button> -->
 
-{{totalBytes}}
+<!-- {{totalBytes}} -->
 
 </div>
 
