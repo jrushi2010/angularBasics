@@ -55,6 +55,20 @@ export class BookingComponent {
     );
   }
 
+  addPassport(){
+    this.bookingForm.addControl('passport',new FormControl(''));
+  }
+
+  deletePassport(){
+    if(this.bookingForm.get('passport')){
+      this.bookingForm.removeControl('passport');
+    }
+  }
+
+  removeGuest(i:number){
+    this.guests.removeAt(i);
+  }
+
 }
 
 

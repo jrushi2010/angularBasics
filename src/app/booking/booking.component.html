@@ -5,8 +5,41 @@
 
   {{ bookingForm.dirty | json }}
 
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="addPassport()"
+    >
+      Add Passport
+    </button>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="deletePassport()"
+    >
+      delete Passport
+    </button>
+  </div>
+
   <form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
     <div class="container">
+      <mat-form-field
+        class="example-full-width"
+        *ngIf="bookingForm.get('passport')"
+      >
+        <mat-label>Passport</mat-label>
+        <input
+          type="test"
+          matInput
+          formControlName="passport"
+          placeholder="Passport Number"
+        />
+      </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Room Id</mat-label>
         <input
@@ -202,11 +235,22 @@
                 />
               </mat-form-field>
             </div>
+            <div>
+              <div>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  (click)="removeGuest(i)"
+                >
+                  Remove Guest
+                </button>
+              </div>
+            </div>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-
     <div>
       <button mat-raised-button color="primary">Book Room</button>
     </div>
