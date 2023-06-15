@@ -41,6 +41,7 @@ export class BookingComponent {
       guests: this.fb.array([this.addGuestControl()]),
       tnc: new FormControl(false,{validators:[Validators.requiredTrue]}),
     });
+    this.getBookingData();
   }
 
   addBooking() {
@@ -68,6 +69,35 @@ export class BookingComponent {
     
     });
   }
+
+  //it is used for if the value are comming from api and we want to bind it to form 
+  //setValue is for - if we have to pass value for each and every control
+  //patchValue is for - it allow to skip some of the controls
+  getBookingData(){
+    // this.bookingForm.setValue({
+    this.bookingForm.patchValue({
+      roomId: '2',
+      guestEmail: 'test@gmail.com',
+      checkindate: new Date('10-Feb-2020'),
+      checkoutdate: '',
+      bookingStatus: '',
+      bookingAmount: '',
+      bookingDate: '',
+      mobileNumber: '',
+      guestName: '',
+      address: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        country: '',
+        zipcode: '',
+      },
+      guests: [],
+      tnc: false,
+    });
+  }
+
 
   addGuest() {
     this.guests.push(
