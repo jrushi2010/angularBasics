@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailValidatorDirective } from './emailvalidator/email-validator.directive'
-import { RoomsModule } from './rooms/rooms.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { RoomsModule } from './rooms/rooms.module';
   ],
   imports: [
     BrowserModule,
-    RoomsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

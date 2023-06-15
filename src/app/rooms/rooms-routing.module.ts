@@ -6,7 +6,7 @@ import { RoomBookingComponent } from './room-booking/room-booking.component';
 
 const routes: Routes = [
   {
-    path: 'rooms', component: RoomsComponent, 
+    path: '', component: RoomsComponent, 
     children: [
       { path: 'add', component: RoomAddComponent },
       { path: ':id', component: RoomBookingComponent },
