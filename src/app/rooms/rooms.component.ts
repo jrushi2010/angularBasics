@@ -1,9 +1,9 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
-import { HeaderComponent } from '../header/header.component';
 import { RoomsService } from '../services/rooms.service';
 import { HttpEventType } from '@angular/common/http';
 import { Subject, Subscription, catchError, map, of } from 'rxjs';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',

@@ -3,10 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RoomsComponent } from './rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
-import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,31 +15,26 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { RoomBookingComponent } from './rooms/room-booking/room-booking.component';
-import { RoomAddComponent } from './rooms/room-add/room-add.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailValidatorDirective } from './emailvalidator/email-validator.directive'
+import { RoomsModule } from './rooms/rooms.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
-    HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
     AppNavComponent,
     NotfoundComponent,
-    RoomBookingComponent,
-    RoomAddComponent,
     LoginComponent,
     HoverDirective,
     EmailValidatorDirective
   ],
   imports: [
     BrowserModule,
+    RoomsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -52,7 +44,8 @@ import { EmailValidatorDirective } from './emailvalidator/email-validator.direct
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
