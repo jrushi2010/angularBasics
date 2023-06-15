@@ -4,6 +4,7 @@ import { RoomsComponent } from './rooms.component';
 import { RoomAddComponent } from './room-add/room-add.component';
 import { RoomBookingComponent } from './room-booking/room-booking.component';
 import { RoomGuard } from './guards/room.guard';
+import { BookingComponent } from '../booking/booking.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     canActivateChild: [RoomGuard],
     children: [
       { path: 'add', component: RoomAddComponent },
-      { path: ':id', component: RoomBookingComponent },
+      { path: ':id', component: BookingComponent },
     ]
   },
   

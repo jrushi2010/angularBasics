@@ -99,7 +99,6 @@ export class BookingComponent {
   getBookingData() {
     // this.bookingForm.setValue({
     this.bookingForm.patchValue({
-      roomId: '2',
       guestEmail: 'test@gmail.com',
       checkindate: new Date('10-Feb-2020'),
       checkoutdate: '',

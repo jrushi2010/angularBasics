@@ -20,6 +20,8 @@ import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailValidatorDirective } from './emailvalidator/email-validator.directive'
 import { RouteConfigToken } from './services/routeConfig.service';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { RouteConfigToken } from './services/routeConfig.service';
     NotfoundComponent,
     LoginComponent,
     HoverDirective,
-    EmailValidatorDirective
+    EmailValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { RouteConfigToken } from './services/routeConfig.service';
     MatIconModule,
     MatListModule,
     FormsModule,
-   
+    MatNativeDateModule,
+   MatDatepickerModule
   ],
   providers: [
     {
