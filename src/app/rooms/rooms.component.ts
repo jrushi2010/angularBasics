@@ -4,6 +4,7 @@ import { RoomsService } from '../services/rooms.service';
 import { HttpEventType } from '@angular/common/http';
 import { Subject, Subscription, catchError, map, of } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-rooms',
@@ -56,7 +57,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   roomList : RoomList[] = [];
 
-  constructor( private roomservice : RoomsService){}
+  constructor( private roomservice : RoomsService, private configService: ConfigService){}
   ngAfterViewChecked(): void {
 
   }
