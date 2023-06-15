@@ -31,10 +31,10 @@ export class BookingComponent {
       mobileNumber: [""],
       guestName: ["",[Validators.required,Validators.minLength(5)]],
       address: this.fb.group({
-        addressLine1: [""],
+        addressLine1: ['',{validators: [Validators.required] }],
         addressLine2: [""],
-        city: [""],
-        state: [""],
+        city: ["",{validators: [Validators.required] }],
+        state: ["",{validators: [Validators.required] }],
         country: [""],
         zipcode: [""],
       }),
@@ -45,6 +45,28 @@ export class BookingComponent {
 
   addBooking() {
     console.log(this.bookingForm.getRawValue());
+    this.bookingForm.reset({
+      roomId: '2',
+      guestEmail: '',
+      checkindate: '',
+      checkoutdate: '',
+      bookingStatus: '',
+      bookingAmount: '',
+      bookingDate: '',
+      mobileNumber: '',
+      guestName: '',
+      address: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        country: '',
+        zipcode: '',
+      },
+      guests: [],
+      tnc: false,
+    
+    });
   }
 
   addGuest() {
@@ -54,7 +76,7 @@ export class BookingComponent {
   }
 
   addGuestControl(){
-    return this.fb.group({ guestName: [''], age: new FormControl(''), })
+    return this.fb.group({ guestName: ['',{validators: [Validators.required]}], age: new FormControl(''), })
   }
 
   addPassport(){
