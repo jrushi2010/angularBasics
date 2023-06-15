@@ -111,21 +111,21 @@
         <mat-label>Check out Date</mat-label>
         <input
           matInput
-          [matDatepicker]="picker"
+          [matDatepicker]="piicker"
           formControlName="checkoutdate"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="piicker"></mat-datepicker-toggle>
+        <mat-datepicker #piicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>booking Date</mat-label>
         <input
           matInput
-          [matDatepicker]="picker"
+          [matDatepicker]="pcker"
           formControlName="bookingDate"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="pcker"></mat-datepicker-toggle>
+        <mat-datepicker #pcker></mat-datepicker>
       </mat-form-field>
     </div>
 
@@ -252,7 +252,10 @@
       </mat-accordion>
     </div>
     <div>
-      <button mat-raised-button color="primary">Book Room</button>
+        <mat-checkbox class="example-margin" formControlName="tnc">Terms and Conditions</mat-checkbox>
+    </div>
+    <div>
+      <button [disabled]="bookingForm.invalid" mat-raised-button color="primary">Book Room</button>
     </div>
   </form>
 </div>
