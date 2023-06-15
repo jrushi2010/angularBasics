@@ -57,7 +57,7 @@
           formControlName="guestName"
           placeholder="Provide Your Name"
         />
-        <!-- {{bookingForm.get('guestName')?.errors | json}} -->
+        {{bookingForm.get('guestName')?.errors | json}}
         <mat-error *ngIf="bookingForm.get('guestName')?.hasError('minlength')">
           Guest Name should be minimum 5 characters
         </mat-error>
@@ -104,20 +104,20 @@
         <mat-label>Check out Date</mat-label>
         <input
           matInput
-          [matDatepicker]="piicker"
+          [matDatepicker]="checkout"
           formControlName="checkoutdate"
         />
         <mat-datepicker-toggle
           matSuffix
-          [for]="piicker"
+          [for]="checkout"
         ></mat-datepicker-toggle>
-        <mat-datepicker #piicker></mat-datepicker>
+        <mat-datepicker #checkout></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>booking Date</mat-label>
-        <input matInput [matDatepicker]="pcker" formControlName="bookingDate" />
-        <mat-datepicker-toggle matSuffix [for]="pcker"></mat-datepicker-toggle>
-        <mat-datepicker #pcker></mat-datepicker>
+        <input matInput [matDatepicker]="booking" formControlName="bookingDate" />
+        <mat-datepicker-toggle matSuffix [for]="booking"></mat-datepicker-toggle>
+        <mat-datepicker #booking></mat-datepicker>
       </mat-form-field>
     </div>
 

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ConfigService } from '../services/config.service';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
+import { BookingService } from './booking.service';
+import { exhaustMap, mergeMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { CustomValidator } from './validators/custom-validator';
 
 @Component({
   selector: 'app-booking',
@@ -17,40 +21,54 @@ export class BookingComponent {
 
   }
 
-  constructor(private configService: ConfigService, private fb: FormBuilder) { }
+  constructor(private configService: ConfigService,
+    private fb: FormBuilder,
+    private bookingService: BookingService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
     this.bookingForm = this.fb.group({
-      roomId: new FormControl({ value: '2', disabled: true }, { validators: [Validators.required] }),
-      guestEmail: ["", { updateOn: 'blur', validators: [Validators.required, Validators.email], },],
-      checkindate: [""],
-      checkoutdate: [""],
-      bookingStatus: [""],
-      bookingAmount: [""],
-      bookingDate: [""],
-      mobileNumber: ["", { updateOn: 'blur' }], //blur is the event call if we move cursor out from the input box
-      guestName: ["", [Validators.required, Validators.minLength(5)]],
+      roomId: new FormControl({ value: id, disabled: true }, { validators: [Validators.required] }),
+      guestEmail: ['', { updateOn: 'blur', validators: [Validators.required, Validators.email], },],
+      checkindate: [''],
+      checkoutdate: [''],
+      bookingStatus: [''],
+      bookingAmount: [''],
+      bookingDate: [''],
+      mobileNumber: ['', { updateOn: 'blur' }], //blur is the event call if we move cursor out from the input box
+      guestName: ['', [Validators.required, Validators.minLength(5), CustomValidator.ValidateName, CustomValidator.ValidateSpecialChar('*')]],
       address: this.fb.group({
         addressLine1: ['', { validators: [Validators.required] }],
-        addressLine2: [""],
-        city: ["", { validators: [Validators.required] }],
-        state: ["", { validators: [Validators.required] }],
-        country: [""],
-        zipcode: [""],
+        addressLine2: [''],
+        city: ['', { validators: [Validators.required] }],
+        state: ['', { validators: [Validators.required] }],
+        country: [''],
+        zipcode: [''],
       }),
       guests: this.fb.array([this.addGuestControl()]),
       tnc: new FormControl(false, { validators: [Validators.requiredTrue] }),
-    },{updateOn:'blur',});
+    }, { updateOn: 'blur', Validators: [CustomValidator.validateDate] });
+
     this.getBookingData();
 
     //it will call for evry key press or every value change so it will give performance issue if we have large form
-    this.bookingForm.valueChanges.subscribe((data) => {
-      console.log(data);
-    })
+    // this.bookingForm.valueChanges.subscribe((data) => {
+    //   //console.log(data);
+    //   this.bookingService.bookRoom(data).subscribe((data)=>{})
+    // });
+
+    this.bookingForm.valueChanges.pipe(
+      exhaustMap((data) => this.bookingService.bookRoom(data)) //mergeMap //switchMap //exhaustMap
+    ).subscribe((data) => console.log(data))
   }
 
   addBooking() {
     console.log(this.bookingForm.getRawValue());
+    // this.bookingService.bookRoom(this.bookingForm.getRawValue()).subscribe((data)=>{
+    //   console.log(data);
+    // })
     this.bookingForm.reset({
       roomId: '2',
       guestEmail: '',

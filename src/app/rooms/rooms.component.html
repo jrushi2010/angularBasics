@@ -25,7 +25,8 @@
 
 </h1> -->
 
-<div *ngIf="rooms.availableRooms > 0">
+<!-- <div *ngIf="rooms.availableRooms > 0"> -->
+<div *ngIf="rooms$| async as rooms">
     Rooms list
     <!-- {{title}} -->
     <!-- {{roomList}} -->
