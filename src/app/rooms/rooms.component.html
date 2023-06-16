@@ -25,6 +25,11 @@
 
 </h1> -->
 
+<!-- {{priceFilter|json}} -->
+<div>
+    <input type="number" class="form-control" placeholder="search on price" [formControl]="priceFilter"/>
+</div>
+
 <!-- <div *ngIf="rooms.availableRooms > 0"> -->
 <div *ngIf="rooms$| async as rooms">
     Rooms list
@@ -32,7 +37,7 @@
     <!-- {{roomList}} -->
     <!-- //parent to child communication -->
     <!-- //child to parent communication  -->
-    <app-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)" [title]="title"></app-rooms-list>
+    <app-rooms-list  [rooms]="roomList" [price]="priceFilter.value" (selectedRoom)="selectRoom($event)" [title]="title"></app-rooms-list>
    
 </div>
 

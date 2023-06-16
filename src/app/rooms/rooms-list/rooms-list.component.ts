@@ -14,6 +14,8 @@ export class RoomsListComponent implements OnChanges{
 
   @Input() title: string = '';
 
+  @Input() price: number = 0;
+
   //child to parent 
   @Output() selectedRoom = new EventEmitter<RoomList>();
 
