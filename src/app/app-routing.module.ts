@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path: '',redirectTo:'/login',pathMatch:'full'},
   {path:'employee',component:EmployeeComponent,canActivate:[LoginGuard]},
   {path:'login',component:LoginComponent},
   {
@@ -16,7 +15,8 @@ const routes: Routes = [
       canActivate:[LoginGuard],
       canLoad: [LoginGuard],
   },
-  { path: 'booking',
+  {path: '',redirectTo:'/login',pathMatch:'full'},
+  { path: 'booking/:id',
    loadChildren: () => 
    import('./booking/booking.module').then(m => m.BookingModule),
   //  canActivate:[LoginGuard]

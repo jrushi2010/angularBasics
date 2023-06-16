@@ -22,6 +22,7 @@ import { EmailValidatorDirective } from './emailvalidator/email-validator.direct
 import { RouteConfigToken } from './services/routeConfig.service';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatListModule,
     FormsModule,
     MatNativeDateModule,
-   MatDatepickerModule
+   MatDatepickerModule,
+   MatSnackBarModule
   ],
   providers: [
     {

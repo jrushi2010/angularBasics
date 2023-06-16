@@ -70,7 +70,7 @@ export class BookingComponent {
     //   console.log(data);
     // })
     this.bookingForm.reset({
-      roomId: '2',
+      roomId: '',
       guestEmail: '',
       checkindate: '',
       checkoutdate: '',
